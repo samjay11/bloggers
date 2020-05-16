@@ -1,6 +1,6 @@
 import phonenumbers
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from blog.models import User
@@ -79,6 +79,9 @@ class UpdateAccountForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
+    category = SelectField('Category', choices=[('1', 'Fashion'), ('2', 'Business'), ('3', 'Travel'),
+                                                ('4', 'Food'), ('5', 'Lifestyle'), ('6', 'Fitness\Sports'),
+                                                ('7', 'Other')], validators=[DataRequired()])
     submit = SubmitField('Post')
 
 

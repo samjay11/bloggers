@@ -46,19 +46,26 @@
 </header>
     <main role="main" class="container">
   <div class="row">
-    <div class="col-md-12">
-      {% block content %}{% endblock %}
-    </div>
-   <!-- <div class="col-md-4">
+       <div class="col-md-4">
      <div class="content-section">
-        <h3>Our Sidebar</h3>
+        <h3>Categories</h3>
         <p class='text-muted'>
           <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=1)}}">Fashion</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=2)}}">Business</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=3)}}">Travel</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=4)}}">Food</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=5)}}">Lifestyle</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=6)}}">Fitness\Sports</a></li>
+            <li class="list-group-item list-group-item-light"><a class="text-muted h3" href="{{url_for('category', category_val=7)}}">Other</a></li>
           </ul>
         </p>
       </div>
-    </div> -->
+    </div>
+    <div class="col-md-8">
+      {% block content %}{% endblock %}
+    </div>
+
   </div>
 </main>
 

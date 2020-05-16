@@ -100,7 +100,7 @@ def account():
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        post = Post(category=form.category.data, title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash(f'Posted!', 'success')
@@ -191,6 +191,13 @@ def reset_token(token):
         flash(f'Your password has been updated!', 'success')
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+@app.route("/<int:category_val>", methods=['GET', 'POST'])
+def category(category_val):
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).filter_by(category=category_val).paginate(page=page, per_page=3)
+    return render_template('home.html', posts=posts)
 
 
 
